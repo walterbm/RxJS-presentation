@@ -5,11 +5,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Drag and Drop with Rx.Observables</title>
+  <style media="screen">
+    #parent {
+      width:400px;
+      height:400px;
+      background-color:red
+    }
+    #widget {
+      position:absolute;
+      color:white;
+      font-size: 8em;
+      cursor: move;
+      border: 2px solid red;
+    }
+  </style>
 </head>
 <body>
-
-    <div id="parent" style="width:200px; height:200px; background-color:red">
-      <div id="widget" style="position:absolute;width:150px;background-color:blue;color:white">Drag me</div>
+  <div id="parent">
+    <div id="widget">Fuzz</div>
   </div>
 
   <script type="text/javascript" src="./DragAndDrop.js"></script>
