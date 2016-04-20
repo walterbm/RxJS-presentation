@@ -1,42 +1,62 @@
 // RxJS & AJAX Network Requests
 
+// API URL
+var URL = 'https://api.github.com/users';
+
 // DOM elements
 var refreshButton = document.querySelector('.refresh');
 var closeButton1 = document.querySelector('.close1');
 var closeButton2 = document.querySelector('.close2');
 var closeButton3 = document.querySelector('.close3');
 
-// create four streams from DOM events associated with click on elements
+
+// create four streams
+// from DOM events associated with click on elements
 // one for DOM events from clicking on the refresh button
-var refreshClickStream = Rx.Observable.fromEvent(refreshButton, 'click');
-// three separate streams for DOM events on each component's close button
-var close1Clicks = Rx.Observable.fromEvent(closeButton1, 'click');
-var close2Clicks = Rx.Observable.fromEvent(closeButton2, 'click');
-var close3Clicks = Rx.Observable.fromEvent(closeButton3, 'click');
+var refreshClickStream =
+  Rx.Observable.fromEvent(refreshButton, 'click');
+// three separate streams
+// for DOM events on each component's close button
+var close1Clicks =
+  Rx.Observable.fromEvent(closeButton1, 'click');
+var close2Clicks =
+  Rx.Observable.fromEvent(closeButton2, 'click');
+var close3Clicks =
+  Rx.Observable.fromEvent(closeButton3, 'click');
 
-// when the page loads none of the above DOM event streams will have fired (no clicks)
-// to make sure we have initial data we use a startup stream with only one event
-var startupRequestStream = Rx.Observable.just('https://api.github.com/users');
+// when the page loads
+// none of the above DOM event streams will have fired
+// (i.e. the user has not clicked)
+// to make sure we have initial data
+// we use a startup stream with only one event
+var startupRequestStream =
+  Rx.Observable.just(URL);
 
-// create a new event stream that transforms DOM events into urls
-// i.e. a new url event for every click on the refresh DOM element
+// create a new event stream
+// that transforms DOM events into urls
+// i.e. a new url event for every click on refresh
 var requestOnRefreshStream = refreshClickStream
   .map(ev => {
     var randomOffset = Math.floor(Math.random()*500);
-    return 'https://api.github.com/users?since=' + randomOffset;
+    return URL + '?since=' + randomOffset;
   });
 
 // to simplify our code we can combine event streams
-// the request stream will use events from both the startup and the refresh streams
-var requestStream = startupRequestStream.merge(requestOnRefreshStream);
+// the request stream will use events
+// from both the startup and the refresh streams
+var requestStream =
+  startupRequestStream.merge(requestOnRefreshStream);
 
-// the response stream will respond to every event from the requestStream
-// requestStream events are only urls
+// the response stream will respond
+// to every event from the request stream
+// request stream events are really just urls as strings
 var responseStream = requestStream
-  // flat map is simply mapping over the collection and flattening nested structures
+  // flat map is mapping over the collection
+  // and flattening nested structures
   .flatMap(requestUrl =>
     // creates a new event stream from the AJAX promise
-    // but the promise stream and the response stream are flattened into one
+    // but the promise stream and the response stream
+    // are flattened into one
     Rx.Observable.fromPromise(axios.get(requestUrl))
   )
   // store or cache the last request response in the stream
@@ -47,7 +67,8 @@ var responseStream = requestStream
 
 // get a random element from the JSON response array
 function getRandomUser(response) {
-  // pul data out of response object (from GET request promise)
+  // pul data out of response object
+  // from the GET request promise
   var listUsers = response.data;
   return listUsers[Math.floor(Math.random()*listUsers.length)];
 }
@@ -55,7 +76,8 @@ function getRandomUser(response) {
 function createSuggestionStream(responseStream, closeClickStream) {
   // for every response get a random user
   return responseStream.map(getRandomUser)
-    // start with an empty event to clear out existing information
+    // start with an empty event
+    // to clear out existing information
     .startWith(null)
     // merge response with close click stream events
     .merge(
@@ -67,15 +89,22 @@ function createSuggestionStream(responseStream, closeClickStream) {
 }
 
 // now we create three streams
-// one for every component that will display a user's information
-// each stream will respond to DOM events from the component's close button
-var suggestion1Stream = createSuggestionStream(responseStream, close1Clicks);
-var suggestion2Stream = createSuggestionStream(responseStream, close2Clicks);
-var suggestion3Stream = createSuggestionStream(responseStream, close3Clicks);
+// one for every component
+// that will display a user's information
+// each stream will respond
+// to DOM events from the component's close button
+var suggestion1Stream =
+  createSuggestionStream(responseStream, close1Clicks);
+var suggestion2Stream =
+  createSuggestionStream(responseStream, close2Clicks);
+var suggestion3Stream =
+  createSuggestionStream(responseStream, close3Clicks);
 
 // listen for changes on each stream
-// every event on these streams will contain a user
-// when an event is fired the components will automatically render
+// every event on these streams
+// will contain a user
+// when an event is fired
+// the components will automatically re-render
 
 // suggested user event stream for component 1
 suggestion1Stream.subscribe(user => {

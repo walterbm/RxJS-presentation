@@ -6,7 +6,8 @@ var button = document.getElementById('button');
 
 // create event stream from DOM events
 var clicks = Observable.fromEvent(button, 'click');
-// extract data from the event stream and create a new stream with the click coordinates
+// extract data from the event stream
+// and create a new stream with the click coordinates
 var points = clicks.map(function(e){
 	return {x: e.clientX, y: e.clientY};
 });
@@ -17,15 +18,18 @@ var clickSubscription =
 		// success handler
 		function onNext(e) { // DOM event fired!
 			alert('clicked');
-			// close the subscription and stop listening to the event stream
+			// close the subscription
+			// and stop listening to the event stream
 			clickSubscription.dispose();
 		},
 		// error handler
-		function onError(error) { // DOM events do not fire errors
+		function onError(error) {
+			// DOM events don't fire errors
 			console.log('ERROR!');
 		},
 		// completed handler (when the event stream ends)
-		function onCompleted() { // DOM event streams do not "end"
+		function onCompleted() {
+			// DOM event streams do not "end"
 			console.log("done");
 		}
   );
@@ -35,12 +39,15 @@ var pointSubscription =
 	points.forEach(
 		function onNext(point) { // point event fired!
 			alert('clicked:' + JSON.stringify(point));
-			// close the subscription and stop listening to the point stream
+			// close the subscription
+			// and stop listening to the point stream
 			pointSubscription.dispose();
 		},
-		function onError(error) { // DOM events do not fire errors
+		function onError(error) {
+			// DOM events do not fire errors
 			console.log('ERROR!');
 		},
-		function onCompleted() { // DOM event streams do not "end"
+		function onCompleted() {
+			// DOM event streams do not "end"
 			console.log("done");
 		});
