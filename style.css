@@ -14,9 +14,8 @@ body {
   color: #eeeeee;
   font-size: 4em;
 }
-.container {
-  width: 80%;
-  margin: 0 auto;
+h1 {
+  margin-bottom: 0;
 }
 a, a:visited { color: #eeeeee; }
 h4, a:hover, a:visited:hover, a.refresh { color: #ffc107; }
@@ -56,6 +55,19 @@ code { font-size: 20px; }
   cursor: move;
   border: 2px solid red;
 }
+#joke {
+  display: block;
+  font-size: 20px;
+  color: red;
+}
+#me {
+  font-size: 15px;
+  position: absolute;
+}
+.container {
+  width: 80%;
+  margin: 0.5em auto;
+}
 .refresh {
   font-size: 80%;
   margin-left: 15px;
@@ -71,9 +83,4 @@ li .username, li .close {
 a.close, a.close:hover {
   margin-right: 1em;
   color: #f44336;
-}
-#joke {
-  display: block;
-  font-size: 20px;
-  color: red;
 }
