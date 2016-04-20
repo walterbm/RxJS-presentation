@@ -1,56 +1,46 @@
-
-
-// var handler = function(e) {
-// 	alert('clicked');
-// 	button.removeEventListener('click', handler);
-// };
-//
-// button.addEventListener('click', handler);
-//
-// try {
-//   [1,2,3].forEach(function(i){
-//     console.log(i);
-//   });
-//
-//   console.log("DONE");
-// }
-// catch (e) {
-//   console.log("ERROR");
-// }
+// RxJS with DOM Events Example
 
 var Observable = Rx.Observable;
 
 var button = document.getElementById('button');
 
+// create event stream from DOM events
 var clicks = Observable.fromEvent(button, 'click');
-
+// extract data from the event stream and create a new stream with the click coordinates
 var points = clicks.map(function(e){
 	return {x: e.clientX, y: e.clientY};
 });
-
+// listen to the click event stream
 var clickSubscription =
+	// handlers for individual events
 	clicks.forEach(
-		function onNext(e) {
+		// success handler
+		function onNext(e) { // DOM event fired!
 			alert('clicked');
+			// close the subscription and stop listening to the event stream
 			clickSubscription.dispose();
 		},
-		function onError(error) {
-			debugger;
+		// error handler
+		function onError(error) { // DOM events do not fire errors
 			console.log('ERROR!');
 		},
-		function onCompleted() {
+		// completed handler (when the event stream ends)
+		function onCompleted() { // DOM event streams do not "end"
 			console.log("done");
 		}
   );
+// listen to the points event stream
 var pointSubscription =
+	// handlers for individual events in the points stream
 	points.forEach(
-		function onNext(point) {
+		function onNext(point) { // point event fired!
 			alert('clicked:' + JSON.stringify(point));
+			// close the subscription and stop listening to the point stream
 			pointSubscription.dispose();
 		},
-		function onError(error) {
+		function onError(error) { // DOM events do not fire errors
 			console.log('ERROR!');
 		},
-		function onCompleted() {
+		function onCompleted() { // DOM event streams do not "end"
 			console.log("done");
 		});
