@@ -15,7 +15,7 @@ var tripleClickStream = clickStream
   });
 
 tripleClickStream.subscribe(function(event) {
-  label.textContent = 'triple click';
+  label.textContent = 'triple click!!!';
 });
 
 tripleClickStream

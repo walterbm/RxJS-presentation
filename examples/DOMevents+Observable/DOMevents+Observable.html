@@ -3,11 +3,34 @@
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/4.1.0/rx.all.js"></script>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>DOM Events vs. Rx.Observable</title>
+  <title>RxJS Examples</title>
+  <link rel="stylesheet" href="../../style.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.min.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      var codeSnippet = document.getElementsByTagName("CODE")
+      axios.get('/DOMevents+Observable.js')
+        .then(function (response) {
+          codeSnippet.innerText = reader.result;
+        })
+        .catch(function (response) {
+          console.log(response);
+        });
+      }
+  </script>
 </head>
 <body>
-  <button id="button" >Click Me!</button>
+  <h1><strong><a href="../../index.html">RxJS</a></strong> <sup>DOMevents+Observable:</sup></h1>
+
+  <div class="container">
+    <button id="button" >Click Me!</button>
+
+    <pre><code class="language-javascript">
+    var lol = 2;
+    </code></pre>
+  </div>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/prism.min.js"></script></script>
   <script type="text/javascript" src="./DOMevents+Observable.js"></script>
 </body>
 </html>

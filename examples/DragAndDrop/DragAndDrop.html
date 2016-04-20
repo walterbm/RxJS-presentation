@@ -3,26 +3,14 @@
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/4.1.0/rx.all.js"></script>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Drag and Drop with Rx.Observables</title>
-  <style media="screen">
-    #parent {
-      width:400px;
-      height:400px;
-      background-color:red
-    }
-    #widget {
-      position:absolute;
-      color:white;
-      font-size: 8em;
-      cursor: move;
-      border: 2px solid red;
-    }
-  </style>
+  <title>RxJS Examples</title>
+  <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
+  <h1><strong><a href="../../index.html">RxJS</a></strong> <sup>Drag&amp;Drop:</sup></h1>
+
   <div id="parent">
-    <div id="widget">Fuzz</div>
+    <div id="widget">Fuzz<span id="joke">put me back!</span></div>
   </div>
 
   <script type="text/javascript" src="./DragAndDrop.js"></script>
