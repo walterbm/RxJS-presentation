@@ -1,0 +1,97 @@
+/*Google Fonts*/
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,300italic,700,700italic");
+/*CSS Reset */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css");
+/*Milligram CSS minified*/
+@import url("https://cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.min.css");
+/*Icons*/
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
+/*Syntax Highlighting*/
+@import url("https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism.min.css");
+
+body {
+  margin: 1em;
+  background: #673ab7;
+  color: #eeeeee;
+  font-size: 4em;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+a, a:visited {
+  color: #eeeeee;
+}
+a:hover, a:visited:hover, a.refresh {
+  color: #ffc107;
+}
+sup {
+  font-weight: 100;
+  font-size: 70%;
+}
+button, .button, a:visited.button {
+  background-color: #ffc107;
+}
+h4 {
+  color: #ffc107;
+}
+h3 {
+  margin: 0 1em;
+  color: #673ab7;
+  display: inline-block;
+  font-weight: 300;
+}
+ul {
+  margin: 10px;
+  list-style: none;
+}
+li {
+  padding: 5px;
+}
+li img {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+code {
+  font-size: 20px;
+}
+#parent {
+  width:500px;
+  height:500px;
+  background-color:red
+}
+#widget {
+  position:absolute;
+  color:white;
+  font-size: 3em;
+  cursor: move;
+  border: 2px solid red;
+}
+.refresh {
+  font-size: 80%;
+  margin-left: 15px;
+}
+.header {
+  background: #eeeeee;
+  padding: 5px;
+}
+.button:hover, a:visited.button:hover {
+  background-color: #eeeeee;
+}
+li .username, li .close {
+  display: inline-block;
+  position: relative;
+  bottom: 15px;
+  left: 5px;
+}
+a.close, a.close:hover {
+  margin-right: 1em;
+  font-size: 80%;
+  color: #f44336;
+}
+#joke {
+  display: block;
+  font-size: 20px;
+  color: red;
+}
