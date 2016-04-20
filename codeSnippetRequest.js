@@ -1,11 +1,11 @@
 var codeSnippetRequest = function (url) {
   var codeSnippet = document.getElementsByTagName("code")[0]
-  axios.get(url)
-    .then(function (response) {
-      codeSnippet.innerHTML = response.data;
-      Prism.highlightAll();
-    })
-    .catch(function (response) {
-      console.log(response);
-    });
+
+  var initializingStream = Rx.Observable.just(url);
+  var responseStream = initializingStream
+    .flatMap(requestUrl => Rx.Observable.fromPromise(axios.get(requestUrl)))
+  responseStream.subscribe(response => {
+    codeSnippet.innerHTML = response.data;
+    Prism.highlightAll();
+  });
 }
