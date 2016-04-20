@@ -6,10 +6,18 @@
     <meta charset="utf-8">
     <title>RxJS Examples</title>
     <link rel="stylesheet" href="../../style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/prism.min.js"></script></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.min.js"></script>
+    <script type="text/javascript" src="../../codeSnippetRequest.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        var url = 'https://raw.githubusercontent.com/walterbm/RxJS-presentation/master/examples/NetworkRequests/NetworkRequests.js';
+        codeSnippetRequest(url);
+      }
+    </script>
   </head>
   <body>
-    <h1><strong><a href="../../index.html">RxJS</a></strong> <sup>NetworkRequests:</sup></h1>
-
+    <h1><strong><a href="../../index.html">RxJS</a></strong> <sup>Network Requests:</sup></h1>
     <div class="container">
       <div class="header">
         <a href="#" class="refresh"><i class="fa fa-refresh" aria-hidden="true"></i></a><h3>Who to follow:</h3>
@@ -31,8 +39,10 @@
           <a href="#" target="_blank" class="username">nor this</a>
         </li>
       </ul>
+      <pre><code class="language-javascript">
+      var loaded = false;
+      </code></pre>
     </div>
-
     <script type="text/javascript" src="./NetworkRequests.js"></script>
   </body>
 </html>

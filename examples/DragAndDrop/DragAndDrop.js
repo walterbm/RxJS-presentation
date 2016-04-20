@@ -18,8 +18,8 @@ var drags =
 var subscription =
   drags.forEach(
     function onNext(e) {
-      widget.style.left = e.clientX + "px";
-      widget.style.top = e.clientY + "px";
+      widget.style.left = e.clientX  - 200 + "px";
+      widget.style.top = e.clientY  - 200 + "px";
     },
     function onError(error) {
       console.log('error');
