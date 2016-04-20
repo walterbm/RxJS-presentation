@@ -8,7 +8,6 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
 /*Syntax Highlighting*/
 @import url("https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism.min.css");
-
 body {
   margin: 1em;
   background: #673ab7;
@@ -19,21 +18,14 @@ body {
   width: 80%;
   margin: 0 auto;
 }
-a, a:visited {
-  color: #eeeeee;
-}
-a:hover, a:visited:hover, a.refresh {
-  color: #ffc107;
-}
+a, a:visited { color: #eeeeee; }
+h4, a:hover, a:visited:hover, a.refresh { color: #ffc107; }
 sup {
   font-weight: 100;
   font-size: 70%;
 }
 button, .button, a:visited.button {
   background-color: #ffc107;
-}
-h4 {
-  color: #ffc107;
 }
 h3 {
   margin: 0 1em;
@@ -45,25 +37,21 @@ ul {
   margin: 10px;
   list-style: none;
 }
-li {
-  padding: 5px;
-}
+li { padding: 5px; }
 li img {
   width: 50px;
   height: 50px;
   border-radius: 25px;
 }
-code {
-  font-size: 20px;
-}
+code { font-size: 20px; }
 #parent {
-  width:500px;
-  height:500px;
-  background-color:red
+  width: 500px;
+  height: 500px;
+  background-color: red
 }
 #widget {
-  position:absolute;
-  color:white;
+  position: absolute;
+  color: white;
   font-size: 3em;
   cursor: move;
   border: 2px solid red;
@@ -72,13 +60,8 @@ code {
   font-size: 80%;
   margin-left: 15px;
 }
-.header {
-  background: #eeeeee;
-  padding: 5px;
-}
-.button:hover, a:visited.button:hover {
-  background-color: #eeeeee;
-}
+.header { padding: 5px; }
+.header, .button:hover, a:visited.button:hover { background-color: #eeeeee; }
 li .username, li .close {
   display: inline-block;
   position: relative;
@@ -87,7 +70,6 @@ li .username, li .close {
 }
 a.close, a.close:hover {
   margin-right: 1em;
-  font-size: 80%;
   color: #f44336;
 }
 #joke {
