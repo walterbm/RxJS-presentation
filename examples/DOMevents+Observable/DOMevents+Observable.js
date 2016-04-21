@@ -1,28 +1,30 @@
 // RxJS with DOM Events Example
-
+// declare an Observable
 var Observable = Rx.Observable;
 
 var button = document.getElementById('button');
 
-// create event stream from DOM events
+// create an event stream from button click events
 var clicks = Observable.fromEvent(button, 'click');
-// extract data from the event stream
-// and create a new stream with the click coordinates
+// now we can map over every event
+// and extract data from the event
+// creating a new stream with the click coordinates
 var points = clicks.map(function(e){
 	return {x: e.clientX, y: e.clientY};
 });
-// listen to the click event stream
+// listener to the click event stream
 var clickSubscription =
-	// handlers for individual events
+	// handlers for individual click events
 	clicks.forEach(
 		// success handler
-		function onNext(e) { // DOM event fired!
+		function onNext(e) {
+			// DOM event fired!
 			alert('clicked');
 			// close the subscription
-			// and stop listening to the event stream
+			// and stop listening to the click event stream
 			clickSubscription.dispose();
 		},
-		// error handler
+		// error handler (optional)
 		function onError(error) {
 			// DOM events don't fire errors
 			console.log('ERROR!');
@@ -33,11 +35,12 @@ var clickSubscription =
 			console.log("done");
 		}
   );
-// listen to the points event stream
+// listener to the points event stream
 var pointSubscription =
 	// handlers for individual events in the points stream
 	points.forEach(
-		function onNext(point) { // point event fired!
+		function onNext(point) {
+			// point event fired!
 			alert('clicked:' + JSON.stringify(point));
 			// close the subscription
 			// and stop listening to the point stream

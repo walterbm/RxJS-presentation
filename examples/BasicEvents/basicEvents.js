@@ -1,20 +1,21 @@
-// In Memory Example
+// Imperative Example
 console.log("IN MEMORY EXAMPLE");
-// in-memory array
+// static in-memory array
 var inMemorySource =
   ['1', '1', 'foo', '2', '3', '5', 'bar', '8', '13'];
-// use a functional approach
-// to add up the numerical values in the array
 var result = inMemorySource
   .map(x => parseInt(x))
   .filter(x => !isNaN(x))
   .reduce((x, y) => x + y);
+// using a functional approach
+// to add up the numerical values in the array
 console.log(result);
 
 
-// RxJS Event Example
+// RxJS Reactive Example
 console.log("REACTIVE EXAMPLE");
-// Observable event stream of the same data.
+// use an Observable
+// to create an event stream of the same data.
 var eventSource = Rx.Observable
   // pull a value from the data source every 300ms
   .interval(300)

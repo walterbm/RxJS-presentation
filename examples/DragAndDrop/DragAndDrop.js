@@ -1,4 +1,4 @@
-// RxJS and DOM Manipulation Example
+// RxJS and UI DOM Manipulation Example
 var Observable = Rx.Observable;
 // get relevant DOM nodes
 var parent = document.getElementById("parent");
@@ -9,23 +9,24 @@ var mouseDowns = Observable.fromEvent(widget, "mousedown");
 var parentMouseMoves = Observable.fromEvent(parent, "mousemove");
 var parentMouseUps = Observable.fromEvent(parent, "mouseup");
 
-// create "drags" event stream
+// let's create a "drags" event stream
 // by mapping over the mouseDowns event stream
 var drags =
   mouseDowns.
     map(function(e) {
-      // for event mouseDown event
-      // take the event in the parent
+      // for every event in the mouseDown stream
+      // take the event in the parentMouseMoves stream
       // (i.e. the mouse event inside the parent DOM element)
       return parentMouseMoves.
-        // stop the drags event stream
+        // only stop the drags event stream
         // when a parentMouseUps event is triggered
         takeUntil(parentMouseUps);
     }).
-    // concatAll will flatten nested structures
-    // (each event will be wrapped in an Observable "array")
+    // concatAll() will flatten nested structures
+    // since after mapping each event will be
+    // wrapped in another Observable "array"
     concatAll();
-// listen to the drags events stream
+// listener to the drags events stream
 var subscription =
   // handlers for individual events
   drags.forEach(
