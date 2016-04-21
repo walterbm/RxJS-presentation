@@ -1,5 +1,5 @@
 # RxJS & Reactive Programing
-RxJS is a reactive programing library for composing asynchronous and event-based javascript applications using the Observer pattern.
+[RxJS](https://github.com/Reactive-Extensions/RxJS) is a reactive programing library for composing asynchronous and event-based javascript applications using the Observer pattern.
 
 This repo contains six examples of RxJS being used for simple events, DOM manipulation, and AJAX requests.
 
@@ -22,11 +22,11 @@ Unlike the traditional imperative programming, in an event-based system the call
 The key functionality provided by RxJS is the [_Observer pattern_](https://en.wikipedia.org/wiki/Observer_pattern) applied to javascript. An Observer is an asynchronous collection that is modeled as an "array" where the items arrive over time.
 
 #### Examples
-The example site contains six small demos using RxJS. Each example illustrate a basic use-case for RxJS and displays the code alongside the demo.
+The [RxJS examples site](http://walterbm.github.io/RxJS-presentation/) contains six small demos using RxJS. Each example illustrate a basic use-case for RxJS and displays the code alongside the demo.
 
-1. Imperative vs. Reactive code
-2. The Observer & Basic RxJS Events
-3. DOM events & Observables
-4. RxJS & Responding to Custom DOM Events (Triple Click)
-5. RxJS &  UI DOM Manipulation (Drag & Drop)
-6. AJAX Network Requests (Random User from the Github API)
+1. [Imperative vs. Reactive code](http://walterbm.github.io/RxJS-presentation/examples/FirstExample/FirstExample.html)
+2. [The Observer & Basic RxJS Events](http://walterbm.github.io/RxJS-presentation/examples/BasicEvents/BasicEvents.html)
+3. [DOM events & Observables](http://walterbm.github.io/RxJS-presentation/examples/DOMevents+Observable/DOMevents+Observable.html)
+4. [RxJS & Responding to Custom DOM Events](http://walterbm.github.io/RxJS-presentation/examples/TripleClick/TripleClick.html) (Triple Click)
+5. [RxJS &  UI DOM Manipulation](http://walterbm.github.io/RxJS-presentation/examples/DragAndDrop/DragAndDrop.html) (Drag & Drop)
+6. [AJAX Network Requests](http://walterbm.github.io/RxJS-presentation/examples/NetworkRequests/NetworkRequests.html) (Random User from the Github API)
